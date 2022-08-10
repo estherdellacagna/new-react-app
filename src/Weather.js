@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ready: false});
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
@@ -31,7 +31,11 @@ export default function Weather(props) {
               />
             </div>
             <div className="col-3">
-              <input type="submit" value="Search" className="btn btn-primary" />
+              <input
+                type="submit"
+                value="Search"
+                className="btn btn-primary w-100"
+              />
             </div>
           </div>
         </form>
@@ -40,15 +44,23 @@ export default function Weather(props) {
           <li> {weatherData.date}</li>
           <li className="text-capitalize"> {weatherData.description}</li>
         </ul>
-        <div className="row">
+        <div className="row mt-3">
           <div className="col-6">
-            <img
-              src={weatherData.iconURL}
-              alt={weatherData.description}
-            />
-            <span className="temperature">{Math.round(weatherData.temperature) } </span>
-            <span className="unit">°C</span>
+            <div className="clearfix">
+              <img
+                src={weatherData.iconURL}
+                alt={weatherData.description}
+                className="float-left"
+              />
+              <div className="float-left">
+                <span className="temperature">
+                  {Math.round(weatherData.temperature)}{" "}
+                </span>
+                <span className="unit">°C</span>
+              </div>
+            </div>
           </div>
+
           <div className="col-6">
             <ul>
               <li>Humidity: {weatherData.humidity}</li>
